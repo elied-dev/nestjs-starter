@@ -17,13 +17,38 @@ This unofficial starter intends to improve the [official starter code](https://g
 $ npm install
 ```
 
+## Run with Docker
+
+```bash
+$ ./run-docker.sh
+```
+
+This script allows to run the app inside a docker container.
+<br>
+All parameters are defined in [Dockerfile](Dockerfile) and in [docker-compose.yaml](docker-compose.yaml).
+<br>
+We can provide to this script the following arguments
+- `--watch`: run the app in watch mode
+- `--build`: rebuild the containers
+- `--cport`: container port the app should listen on (default 3000)
+- `--lport`: localhost port the dockerized app should listen on (default 3000)
+- `--file`: specify which docker compose file to run
+
+Example:
+```bash
+$ ./run-docker.sh \
+    --watch # run in watch mode
+    --build # force build
+    --cport=4002 # container internal port
+    --lport=8000 # localhost port
+    --file="new-docker.yaml" # docker compose file config
+```
+
 ## Stay in touch
 
-
-
-| Name | Github Profile | Roles | Profile
-| --- | --- | --- | --- |
-| Elie Drai | https://github.com/elied-dev | ADMIN <br>CONTRIBUTOR | <a href="URL_REDIRECT" target="blank"><img align="center" src="https://avatars.githubusercontent.com/u/106579448?s=400&u=00677ff0b4eba6a517bea6bc9ac2cf37e46c4d78&v=4" height="100" /></a>
+| Name | Github Profile | Roles
+| --- | --- | --- |
+| Elie Drai | [<a href="URL_REDIRECT" target="blank"><img align="center" src="https://avatars.githubusercontent.com/u/106579448?s=400&u=00677ff0b4eba6a517bea6bc9ac2cf37e46c4d78&v=4" height="100" /></a>](https://github.com/elied-dev) | ADMIN <br>CONTRIBUTOR 
 
 
 ## License

@@ -1,0 +1,14 @@
+version: '3.6'
+services:
+  app:
+   build: .
+   command: "${DOCKER_CMD}"
+   env_file:
+    - ./env/${ENV_FILE_NAME}
+   volumes:
+    - .:/usr/app
+    - /usr/app/node_modules
+   environment:
+     - APP_PORT=${CONTAINER_APP_PORT}
+   ports:
+    - "${LOCALHOST_APP_PORT}:${CONTAINER_APP_PORT}"
