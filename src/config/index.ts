@@ -10,6 +10,11 @@ class ConfigUtils {
   static parseInt(val: string): number {
     return parseInt(val, 10) || 0;
   }
+
+  static parseArrayString(val: string): string[] {
+    if (!val) return [];
+    return val.split(',') || [];
+  }
 }
 
 export class Config {
@@ -28,6 +33,9 @@ export class Config {
           useLogWrapper: ConfigUtils.parseBoolean(process.env.USE_LOG_WRAPPER),
           logWrapperKey: process.env.LOG_WRAPPER_KEY || 'payload',
           prettifyLogs: ConfigUtils.parseBoolean(process.env.PRETTIFY_LOGS),
+          excludeLoggingPaths: ConfigUtils.parseArrayString(
+            process.env.EXLUDE_LOGGING_PATHS || '/ping,/health',
+          ),
         },
       };
     }

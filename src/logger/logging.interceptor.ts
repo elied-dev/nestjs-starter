@@ -9,12 +9,19 @@ import { tap } from 'rxjs/operators';
 import { ClsUtils } from 'src/utils/cls-middleware/cls.utils';
 import { PinoLogger } from './pino.logger';
 import { Request, Response } from 'express';
+import { Config } from 'src/config';
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
   logger = new PinoLogger();
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const req: Request = context.switchToHttp().getRequest();
+
+    //  exclude logging for specific paths
+    const excludePaths = Config.config.logging.excludeLoggingPaths;
+    if (excludePaths.includes(req.path)) {
+      return next.handle();
+    }
 
     const startRequestTime = Date.now();
     ClsUtils.set('startRequestTime', startRequestTime);

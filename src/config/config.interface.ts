@@ -5,6 +5,7 @@ interface LoggingConfiguration {
   useLogWrapper: boolean;
   logWrapperKey: string;
   prettifyLogs: boolean;
+  excludeLoggingPaths: string[];
 }
 
 interface RunningConfiguration {

@@ -15,4 +15,5 @@
 | USE_LOG_WRAPPER | wrap log inside the `LOG_WRAPPER_KEY` | `true`, `false` | `false` |
 | LOG_WRAPPER_KEY | the key to use for wrapping logs | any wanted name | `payload` |
 | PRETTIFY_LOGS | use prettified logs | `true`, `false` | `false` |
+| EXLUDE_LOGGING_PATHS | exclude paths from automatic logging | list of paths separated by a comma | `"/ping,/health"`
 
