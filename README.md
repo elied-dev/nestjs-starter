@@ -48,9 +48,8 @@ $ ./run-docker.sh \
 
 | Name | Github Profile | Roles
 | --- | --- | --- |
-| Elie Drai | [<a href="URL_REDIRECT" target="blank"><img align="center" src="https://avatars.githubusercontent.com/u/106579448?s=400&u=00677ff0b4eba6a517bea6bc9ac2cf37e46c4d78&v=4" height="100" /></a>](https://github.com/elied-dev) | ADMIN <br>CONTRIBUTOR 
+| [Elie Drai](https://github.com/elied-dev) | [<a href="https://github.com/elied-dev" target="blank"><img align="center" src="https://avatars.githubusercontent.com/u/106579448?s=400&u=00677ff0b4eba6a517bea6bc9ac2cf37e46c4d78&v=4" height="100" /></a>](https://github.com/elied-dev) | ADMIN <br>CONTRIBUTOR 
 
 
 ## License
-
 Nest Starter is [MIT licensed](LICENSE).

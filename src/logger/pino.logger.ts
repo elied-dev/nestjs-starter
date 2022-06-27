@@ -3,11 +3,7 @@ import pinoLogger from 'pino';
 import { pinoConfig } from './pino.config';
 
 export class PinoLogger implements LoggerService {
-  private logger = this.getPinoLogger();
-
-  private getPinoLogger() {
-    return pinoLogger(pinoConfig);
-  }
+  private logger = pinoLogger(pinoConfig());
 
   log(message: any, ...optionalParams: any[]) {
     this.logger.info(message, ...optionalParams);

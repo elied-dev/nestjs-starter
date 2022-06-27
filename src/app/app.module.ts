@@ -7,7 +7,9 @@ import { AppService } from './app.service';
 
 @Module({
   imports: [
-    LoggerModule.forRoot({ pinoHttp: { ...pinoConfig, autoLogging: false } }),
+    LoggerModule.forRootAsync({
+      useFactory: () => ({ pinoHttp: { ...pinoConfig(), autoLogging: false } }),
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -34,12 +34,12 @@ export class LoggingInterceptor implements NestInterceptor {
         const endRequestTime = Date.now();
         ClsUtils.set('endRequestTime', endRequestTime);
 
-        this.logger.info(
+        this.logger.warn(
           {
             ...responseInfo(req, res, data),
             startRequestTime,
             endRequestTime,
-            duration: `${endRequestTime - startRequestTime}ms`,
+            duration: endRequestTime - startRequestTime,
           },
           `Request completed ${requestId} - ${method} ${url}`,
         );
