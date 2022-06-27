@@ -27,6 +27,7 @@ export class Config {
           port: ConfigUtils.parseInt(process.env.PORT) || 3000,
           environment:
             Environments[process.env.NODE_ENV] || Environments.DEVELOPMENT,
+          version: process.env.APP_VERSION || '1.0.0',
         },
         logging: {
           logLevel: <Level>process.env.LOG_LEVEL || 'info',

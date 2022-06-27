@@ -1,5 +1,5 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
-import { RouterModule } from 'nest-router';
+import { RouterModule } from '@nestjs/core';
 import { LoggerModule } from 'nestjs-pino';
 import { ApiV1Module } from 'src/api/api-v1.module';
 import { routes } from 'src/api/routes';
@@ -13,7 +13,7 @@ import { AppService } from './app.service';
     LoggerModule.forRootAsync({
       useFactory: () => ({ pinoHttp: { ...pinoConfig(), autoLogging: false } }),
     }),
-    RouterModule.forRoutes(routes),
+    RouterModule.register(routes),
     ApiV1Module,
   ],
   controllers: [AppController],

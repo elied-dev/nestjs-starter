@@ -6,6 +6,7 @@
 | ----------- | ----------- | ------ | ------- |
 | PORT | the port app will listen on | any number| 3000 |
 | NODE_ENV | node environment for using the app | `dev`,`prod` | `dev` |
+| APP_VERSION | app running version | any SemVer string | `1.0.0` |
 
 
 ## Logging configuration

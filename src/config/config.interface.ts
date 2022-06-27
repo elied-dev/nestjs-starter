@@ -11,6 +11,7 @@ interface LoggingConfiguration {
 interface RunningConfiguration {
   port: number;
   environment: Environments;
+  version: string;
 }
 
 export interface Configuration {

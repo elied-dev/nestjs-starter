@@ -5,7 +5,7 @@ export function pinoConfig() {
     level: Config.config.logging.logLevel,
     messageKey: 'message',
     nestedKey: Config.config.logging.useLogWrapper
-      ? process.env.LOG_WRAPPER_KEY || 'payload'
+      ? Config.config.logging.logWrapperKey || 'payload'
       : undefined,
     formatters: {
       level: (level: string, severity: number) => ({

@@ -1,4 +1,4 @@
-import { Routes } from 'nest-router';
+import { Routes } from '@nestjs/core';
 import { ApiV1Module } from './api-v1.module';
 import { SampleModule } from './sample/sample.module';
 
