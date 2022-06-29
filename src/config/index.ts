@@ -11,16 +11,16 @@ class ConfigUtils {
     return parseInt(val, 10) || 0;
   }
 
-  static parseArrayString(val: string): string[] {
+  static parseArray<T>(val: string): T[] {
     if (!val) return [];
-    return val.split(',') || [];
+    return val.split(',').map((e) => e as any) || [];
   }
 }
 
 export class Config {
   private static _config: Configuration = null;
 
-  public static get config(): Configuration {
+  public static get _(): Configuration {
     if (!this._config) {
       this._config = {
         running: {
@@ -34,7 +34,7 @@ export class Config {
           useLogWrapper: ConfigUtils.parseBoolean(process.env.USE_LOG_WRAPPER),
           logWrapperKey: process.env.LOG_WRAPPER_KEY || 'payload',
           prettifyLogs: ConfigUtils.parseBoolean(process.env.PRETTIFY_LOGS),
-          excludeLoggingPaths: ConfigUtils.parseArrayString(
+          excludeLoggingPaths: ConfigUtils.parseArray<string>(
             process.env.EXLUDE_LOGGING_PATHS || '/ping,/health',
           ),
         },
@@ -44,4 +44,4 @@ export class Config {
   }
 }
 
-export const loadConfig = () => Config.config;
+export const loadConfig = () => Config._;

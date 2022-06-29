@@ -18,7 +18,7 @@ export class LoggingInterceptor implements NestInterceptor {
     const req: Request = context.switchToHttp().getRequest();
 
     //  exclude logging for specific paths
-    const excludePaths = Config.config.logging.excludeLoggingPaths;
+    const excludePaths = Config._.logging.excludeLoggingPaths;
     if (excludePaths.includes(req.path)) {
       return next.handle();
     }

@@ -2,10 +2,10 @@ import { Config } from 'src/config';
 
 export function pinoConfig() {
   return {
-    level: Config.config.logging.logLevel,
+    level: Config._.logging.logLevel,
     messageKey: 'message',
-    nestedKey: Config.config.logging.useLogWrapper
-      ? Config.config.logging.logWrapperKey || 'payload'
+    nestedKey: Config._.logging.useLogWrapper
+      ? Config._.logging.logWrapperKey || 'payload'
       : undefined,
     formatters: {
       level: (level: string, severity: number) => ({
@@ -13,7 +13,7 @@ export function pinoConfig() {
         severity,
       }),
     },
-    ...(Config.config.logging.prettifyLogs
+    ...(Config._.logging.prettifyLogs
       ? {
           transport: {
             target: 'pino-pretty',

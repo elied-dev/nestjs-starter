@@ -3,7 +3,7 @@ import { RouterModule } from '@nestjs/core';
 import { LoggerModule } from 'nestjs-pino';
 import { ApiV1Module } from 'src/api/api-v1.module';
 import { routes } from 'src/api/routes';
-import { pinoConfig } from 'src/logger/pino.config';
+import { pinoConfig } from 'src/common/logger/pino.config';
 import { ClsMiddleware } from 'src/utils/cls-middleware/cls.middleware';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';

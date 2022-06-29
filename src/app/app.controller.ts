@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { BadRequestException, Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -15,5 +15,12 @@ export class AppController {
     return {
       ping: 'pong',
     };
+  }
+
+  @Get('error')
+  error(): Record<string, string> {
+    const x = undefined;
+    x.hello = 2;
+    throw new BadRequestException();
   }
 }

@@ -1,11 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
-import { PinoLogger } from './logger/pino.logger';
+import { PinoLogger } from './common/logger/pino.logger';
 import { config } from 'dotenv';
 import { Config, loadConfig } from './config';
-import { LoggingInterceptor } from './logger/logging.interceptor';
+import { LoggingInterceptor } from './common/logger/logging.interceptor';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { writeFileSync } from 'fs';
+import { ResponseInterceptor } from './common/response/response.interceptor';
+import { HttpExceptionFilter } from './common/exception/http-exception.filter';
 
 const loadEnvVariables = (environment = 'dev') => {
   const envPath = __dirname + `/../env/${environment || ''}.env`;
@@ -16,7 +18,7 @@ const getSwaggerDocumentConfig = () => {
   const config = new DocumentBuilder()
     .setTitle('Example Nest Application')
     .setDescription('Sample Nest Application for NestJS Starter')
-    .setVersion(Config.config.running.version)
+    .setVersion(Config._.running.version)
     .build();
   return config;
 };
@@ -32,6 +34,12 @@ async function bootstrap() {
   //  loggingInterceptor
   app.useGlobalInterceptors(new LoggingInterceptor());
 
+  //  response interceptor
+  app.useGlobalInterceptors(new ResponseInterceptor());
+
+  //  exception interceptor
+  app.useGlobalFilters(new HttpExceptionFilter());
+
   //  set swagger configuration
   const swaggerDocument = SwaggerModule.createDocument(
     app,
@@ -44,7 +52,7 @@ async function bootstrap() {
     JSON.stringify(swaggerDocument),
   );
 
-  const appPort = Config.config.running.port;
+  const appPort = Config._.running.port;
 
   await app.listen(appPort, () => {
     logger.warn('App listening on port ' + appPort);
