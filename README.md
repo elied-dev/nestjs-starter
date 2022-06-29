@@ -20,7 +20,7 @@ $ npm install
 ## Run with Docker
 
 ```bash
-$ ./run-docker.sh
+$ ./scripts/run-docker.sh
 ```
 
 This script allows to run the app inside a docker container.
@@ -36,7 +36,7 @@ We can provide to this script the following arguments
 
 Example:
 ```bash
-$ ./run-docker.sh \
+$ ./scripts/run-docker.sh \
     --watch # run in watch mode
     --build # force build
     --cport=4002 # container internal port
