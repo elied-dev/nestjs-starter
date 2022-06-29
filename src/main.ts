@@ -8,6 +8,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { writeFileSync } from 'fs';
 import { ResponseInterceptor } from './common/response/response.interceptor';
 import { HttpExceptionFilter } from './common/exception/http-exception.filter';
+import { VersioningType } from '@nestjs/common';
 
 const loadEnvVariables = (environment = 'dev') => {
   const envPath = __dirname + `/../env/${environment || ''}.env`;
@@ -40,12 +41,16 @@ async function bootstrap() {
   //  exception interceptor
   app.useGlobalFilters(new HttpExceptionFilter());
 
+  app.enableVersioning({
+    type: VersioningType.URI,
+  });
+
   //  set swagger configuration
   const swaggerDocument = SwaggerModule.createDocument(
     app,
     getSwaggerDocumentConfig(),
   );
-  SwaggerModule.setup('api/docs', app, swaggerDocument);
+  SwaggerModule.setup('swagger', app, swaggerDocument);
   writeFileSync(
     __dirname +
       `/../docs/swagger-${new Date().toISOString().slice(0, 10)}.json`,

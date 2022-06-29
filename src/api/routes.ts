@@ -1,11 +1,11 @@
 import { Routes } from '@nestjs/core';
-import { ApiV1Module } from './api-v1.module';
+import { ApiModule } from './api.module';
 import { SampleModule } from './sample/sample.module';
 
 export const routes: Routes = [
   {
-    path: 'api/v1',
-    module: ApiV1Module,
+    path: 'api',
+    module: ApiModule,
     children: [
       {
         path: 'sample',

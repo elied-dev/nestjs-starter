@@ -4,4 +4,4 @@ import { SampleModule } from './sample/sample.module';
 @Module({
   imports: [SampleModule],
 })
-export class ApiV1Module {}
+export class ApiModule {}

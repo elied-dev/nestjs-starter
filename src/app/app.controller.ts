@@ -1,6 +1,8 @@
 import { BadRequestException, Controller, Get } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
 
+@ApiTags('Common')
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
