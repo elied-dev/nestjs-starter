@@ -1,4 +1,5 @@
-import { BadRequestException, Controller, Get } from '@nestjs/common';
+import { Controller, Get, HttpException, Param } from '@nestjs/common';
+import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
 import { ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
 
@@ -8,21 +9,26 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(): { message: string } {
+    return {
+      message: 'App running...',
+    };
   }
 
   @Get('ping')
-  ping(): Record<string, string> {
+  ping(): { ping: string } {
     return {
       ping: 'pong',
     };
   }
 
-  @Get('error')
-  error(): Record<string, string> {
-    const x = undefined;
-    x.hello = 2;
-    throw new BadRequestException();
+  @Get('error/:error_status_code')
+  error(
+    @Param('error_status_code') errorStatusCode: number,
+  ): Record<string, string> {
+    throw new HttpException(
+      'Generating error ' + errorStatusCode,
+      errorStatusCode || 400,
+    );
   }
 }
