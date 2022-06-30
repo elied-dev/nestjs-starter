@@ -6,10 +6,10 @@ import {
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { ClsUtils } from 'src/utils/cls-middleware/cls.utils';
+import { ClsUtils } from '../../utils/cls-middleware/cls.utils';
 import { PinoLogger } from './pino.logger';
 import { Request, Response } from 'express';
-import { Config } from 'src/config';
+import { Config } from '../../config';
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {

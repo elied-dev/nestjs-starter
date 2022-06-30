@@ -6,7 +6,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { ClsUtils } from 'src/utils/cls-middleware/cls.utils';
+import { ClsUtils } from '../../utils/cls-middleware/cls.utils';
 import { PinoLogger } from '../logger/pino.logger';
 
 @Catch()

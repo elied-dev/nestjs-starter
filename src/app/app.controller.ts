@@ -1,5 +1,4 @@
 import { Controller, Get, HttpException, Param } from '@nestjs/common';
-import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
 import { ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
 
@@ -9,7 +8,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): { message: string } {
+  getRoot(): { message: string } {
     return {
       message: 'App running...',
     };

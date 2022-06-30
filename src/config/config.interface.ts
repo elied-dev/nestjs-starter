@@ -1,5 +1,5 @@
 import { Level } from 'pino';
-import { Environments } from 'src/models/environments.enum';
+import { Environments } from '../models/environments.enum';
 interface LoggingConfiguration {
   logLevel: Level;
   useLogWrapper: boolean;
