@@ -9,6 +9,7 @@ import { writeFileSync } from 'fs';
 import { ResponseInterceptor } from './common/response/response.interceptor';
 import { HttpExceptionFilter } from './common/exception/http-exception.filter';
 import { VersioningType } from '@nestjs/common';
+import { NestFastifyApplication } from '@nestjs/platform-fastify';
 
 const loadEnvVariables = (environment = 'dev') => {
   const envPath = __dirname + `/../env/${environment || ''}.env`;
@@ -27,7 +28,7 @@ const getSwaggerDocumentConfig = () => {
 async function bootstrap() {
   const logger = new PinoLogger();
 
-  const app = await NestFactory.create(AppModule, {
+  const app = await NestFactory.create<NestFastifyApplication>(AppModule, {
     bufferLogs: true,
     logger,
   });
